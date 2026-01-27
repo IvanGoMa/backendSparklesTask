@@ -1,9 +1,14 @@
 package com.ra12.projecte1.model;
 
 import java.sql.Timestamp;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 
+@Entity
 public class Task {
-
+    @Id
+    @GeneratedValue
     private long id;
     private String nomTasca;
     private int sparks;
