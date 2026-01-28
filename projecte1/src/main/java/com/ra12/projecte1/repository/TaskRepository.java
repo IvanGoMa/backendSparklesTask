@@ -1,5 +1,6 @@
 package com.ra12.projecte1.repository;
 
+import java.sql.Timestamp;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -55,13 +56,31 @@ public class TaskRepository {
         return result.get(0);
     }
 
-    // set image path - 
+    // set image path - int ( n valors modificats)
+    public int setImagePath(Long id, String urlImage){
+        Timestamp now = new Timestamp(System.currentTimeMillis());
+        String sql = "UPDATE tasks SET urlImage = ?, dataUpdated = ? WHERE id = ?";
+        return jdbcTemplate.update(sql, urlImage, now, id);
+    }
 
-    //update x id - 
+    //update x id - int
+    public int updateTaskById(Long id, Task taska){
+        Timestamp now = new Timestamp(System.currentTimeMillis());
+        String sql = "UPDATE tasks SET nomTaska = ?, sparks = ?, dataLimit = ?, dataUpdated = ?, urlImage = ?";
+        return jdbcTemplate.update(sql, taska.getNomTaska(), taska.getSparks(), taska.getDataLimit(), now, taska.getUrlImage());
+    }
 
-    //delete all - 
+    //delete all - int
+    public int deleteAll(){
+        String sql = "DELETE * from tasks";
+        return jdbcTemplate.update(sql);
+    }
 
-    //detete x id - 
+    //detete x id - int
+    public int deleteById(Long id){
+        String sql = "DELETE * FROM tasks WHERE id = ?";
+        return jdbcTemplate.update(sql, id);
+    }
 
 
 

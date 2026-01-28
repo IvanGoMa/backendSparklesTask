@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ra12.projecte1.model.Task;
 import com.ra12.projecte1.odt.taskRequestDTO;
 import com.ra12.projecte1.repository.TaskRepository;
 
@@ -41,7 +42,7 @@ public class TaskService {
                 String urlImage = image.getOriginalFilename();
                 Path urlSencer = PATH_DIR.resolve(urlImage);
                 Files.copy(image.getInputStream(), urlSencer, StandardCopyOption.REPLACE_EXISTING);
-                int resposta = repo.setImagePath(urlSencer.toString());
+                int resposta = repo.setImagePath(id, urlSencer.toString());
 
                 if (resposta == 0){
                     return new String[] {"e", "No s'ha pogut actualitzar l'imatge"};
