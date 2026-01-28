@@ -10,20 +10,20 @@ public class Task {
     @Id
     @GeneratedValue
     private long id;
-    private String nomTasca;
+    private String nomTaska;
     private int sparks;
     private Timestamp dataLimit;
     private Timestamp dataCreated;
     private Timestamp dataUpdated;
     private String urlImage;
 
+    public Task() {
+    }
 
-
-
-    public Task(String nomTasca, int sparks, Timestamp dataLimit, Timestamp dataCreated, Timestamp dataUpdated,
+    public Task(String nomTaska, int sparks, Timestamp dataLimit, Timestamp dataCreated, Timestamp dataUpdated,
             String urlImage) {
         
-        this.nomTasca = nomTasca;
+        this.nomTaska = nomTaska;
         this.sparks = sparks;
         this.dataLimit = dataLimit;
         this.dataCreated = dataCreated;
@@ -32,8 +32,8 @@ public class Task {
     }
 
 
-    public Task(String nomTasca, int sparks, Timestamp dataLimit, Timestamp dataCreated, Timestamp dataUpdated) {
-        this.nomTasca = nomTasca;
+    public Task(String nomTaska, int sparks, Timestamp dataLimit, Timestamp dataCreated, Timestamp dataUpdated) {
+        this.nomTaska = nomTaska;
         this.sparks = sparks;
         this.dataLimit = dataLimit;
         this.dataCreated = dataCreated;
@@ -47,11 +47,11 @@ public class Task {
     public void setId(long id) {
         this.id = id;
     }
-    public String getNomTasca() {
-        return nomTasca;
+    public String getnomTaska() {
+        return nomTaska;
     }
-    public void setNomTasca(String nomTasca) {
-        this.nomTasca = nomTasca;
+    public void setNomTaska(String nomTaska) {
+        this.nomTaska = nomTaska;
     }
     public int getSparks() {
         return sparks;
@@ -82,6 +82,11 @@ public class Task {
     }
     public void setUrlImage(String urlImage) {
         this.urlImage = urlImage;
+    }
+
+
+    public String getNomTaska() {
+        return nomTaska;
     }
 
     
