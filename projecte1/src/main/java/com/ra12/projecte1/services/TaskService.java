@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,12 +25,25 @@ public class TaskService {
     @Autowired
     TaskRepository repo;
 
-    public ResponseEntity<String> createTask(taskRequestDTO task){
-        repo.createTask();
+    public String[] createTask(taskRequestDTO taskDTO){
+        Task task = new Task();
+        task.setNomTaska(taskDTO.getNomTaska());
+        task.setSparks(taskDTO.getSparks());
+        task.setDataLimit(taskDTO.getDataLimit());
+        
+        try {
+            int result = repo.createTask(task);
+            if (result > 0) {
+                return new String[]{"ok", "Taska s'ha creat correctament"};
+            } else {
+                return new String[]{"e", "No s'ha pogut crear la taska"};
+            }
+        } catch (Exception e) {
+            return new String[]{"e", e.getMessage()};
+        }
     }
 
     
-
     public String[] addImage(Long id, MultipartFile image){
         Task existeix = idExisteix(id);
         if (existeix == null){

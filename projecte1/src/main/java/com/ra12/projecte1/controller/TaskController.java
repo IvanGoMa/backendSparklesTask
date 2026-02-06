@@ -25,9 +25,10 @@ public class TaskController {
 
     @PostMapping("/task")
     public ResponseEntity<String> createTask(@RequestBody taskRequestDTO task) {
-
-        
-        return service.createTask(task);
+        String[] resposta = service.createTask(task);
+        if (resposta[0].equals("ok")){
+            return ResponseEntity.ok(resposta[1]);
+        }else return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(resposta[1]);
     }
 
     @PostMapping("/task/{taskId}/add/imatge")
@@ -36,7 +37,7 @@ public class TaskController {
         if (resposta[0].equals("ok")){ 
             return ResponseEntity.ok(resposta[1]);
         }else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(resposta[1])
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(resposta[1]);
         }
     }
     
