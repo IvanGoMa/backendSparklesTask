@@ -5,21 +5,21 @@ import java.sql.Timestamp;
 import com.ra12.projecte1.model.Task;
 
 public class taskRequestDTO {
-    private String nomTaska; 
+    private String nomTasca; 
     private int sparks;
     private Timestamp dataLimit;
     private String urlImage;
 
     public Task toTask(){
-        return new Task(nomTaska, sparks, dataLimit, new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()), urlImage);
+        return new Task(nomTasca, sparks, dataLimit, new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()), urlImage);
     }
 
-    public String getNomTaska() {
-        return nomTaska;
+    public String getNomTasca() {
+        return nomTasca;
     }
 
-    public void setNomTaska(String nomTaska) {
-        this.nomTaska = nomTaska;
+    public void setNomTasca(String nomTasca) {
+        this.nomTasca = nomTasca;
     }
 
     public int getSparks() {

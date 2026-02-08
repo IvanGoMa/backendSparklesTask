@@ -24,7 +24,7 @@ public class TaskRepository {
         public Task mapRow(ResultSet rs, int rowNum) throws SQLException {
             Task t = new Task();
             t.setId(rs.getLong("id"));
-            t.setNomTaska(rs.getString("nomTaska"));
+            t.setNomTasca(rs.getString("nomTasca"));
             t.setSparks(rs.getInt("sparks"));
             t.setDataLimit(rs.getTimestamp("dataLimit"));
             t.setDataCreated(rs.getTimestamp("dataCreated"));
@@ -39,10 +39,10 @@ public class TaskRepository {
 
     //create task & optional para imagen
     public int createTask(Task task){
-    String sql = "INSERT INTO tasks (nomTaska, sparks, dataLimit, dataCreated, dataUpdated, ultimAcces) VALUES (?, ?, ?, ?, ?, ?)";
+    String sql = "INSERT INTO tasks (nomTasca, sparks, dataLimit, dataCreated, dataUpdated, ultimAcces) VALUES (?, ?, ?, ?, ?, ?)";
     Timestamp now = new Timestamp(System.currentTimeMillis());
     return jdbcTemplate.update(sql, 
-        task.getNomTaska(), 
+        task.getNomTasca(), 
         task.getSparks(), 
         task.getDataLimit(), 
         now, 
@@ -52,9 +52,15 @@ public class TaskRepository {
 }
 
     // read all
+    public List<Task> readAll(){
+        return jdbcTemplate.query("SELECT * FROM tasks", taskMapper);
+    }
 
     // read x id
-
+    public Task readById(long id){
+        String query = "SELECT * FROM tasks WHERE id = ?";
+        return jdbcTemplate.queryForObject(query, taskMapper, id);
+    }
 
 
 
@@ -83,10 +89,10 @@ public class TaskRepository {
     }
 
     //update x id - int
-    public int updateTaskById(Long id, Task taska){
+    public int updateTaskById(Long id, Task tasca){
         Timestamp now = new Timestamp(System.currentTimeMillis());
-        String sql = "UPDATE tasks SET nomTaska = ?, sparks = ?, dataLimit = ?, dataUpdated = ?, ultimAcces = ?, urlImage = ? WHERE id = ?";
-        return jdbcTemplate.update(sql, taska.getNomTaska(), taska.getSparks(), taska.getDataLimit(), now, now, taska.getUrlImage(), id);
+        String sql = "UPDATE tasks SET nomTasca = ?, sparks = ?, dataLimit = ?, dataUpdated = ?, ultimAcces = ?, urlImage = ? WHERE id = ?";
+        return jdbcTemplate.update(sql, tasca.getNomTasca(), tasca.getSparks(), tasca.getDataLimit(), now, now, tasca.getUrlImage(), id);
     }
 
     //delete all - int

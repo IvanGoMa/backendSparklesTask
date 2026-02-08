@@ -1,11 +1,5 @@
 package com.ra12.projecte1.controller;
 
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
-
-import com.ra12.projecte1.odt.taskRequestDTO;
-import com.ra12.projecte1.services.TaskService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +8,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.ra12.projecte1.odt.taskRequestDTO;
+import com.ra12.projecte1.services.TaskService;
 
 
 @RestController
@@ -22,6 +21,8 @@ public class TaskController {
 
     @Autowired
     TaskService service;
+
+    
 
     @PostMapping("/task")
     public ResponseEntity<String> createTask(@RequestBody taskRequestDTO task) {
@@ -40,6 +41,17 @@ public class TaskController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(resposta[1]);
         }
     }
+
+    @PostMapping("task/batch")
+    public ResponseEntity<String> importTasks(@RequestBody MultipartFile csv) {
+        try {
+            service.createTasks(csv);
+            return ResponseEntity.ok("Tasques importades");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("No s'han pogut importar les tasques");
+        }
+    }
+    
     
     
 }
