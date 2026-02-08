@@ -1,6 +1,9 @@
 package com.ra12.projecte1.model;
 
 import java.sql.Timestamp;
+
+import com.ra12.projecte1.odt.taskResponseDTO;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -10,7 +13,7 @@ public class Task {
     @Id
     @GeneratedValue
     private long id;
-    private String nomTaska;
+    private String nomTasca;
     private int sparks;
     private Timestamp dataLimit;
     private Timestamp dataCreated;
@@ -20,10 +23,10 @@ public class Task {
     public Task() {
     }
 
-    public Task(String nomTaska, int sparks, Timestamp dataLimit, Timestamp dataCreated, Timestamp dataUpdated,
+    public Task(String nomTasca, int sparks, Timestamp dataLimit, Timestamp dataCreated, Timestamp dataUpdated,
             String urlImage) {
         
-        this.nomTaska = nomTaska;
+        this.nomTasca = nomTasca;
         this.sparks = sparks;
         this.dataLimit = dataLimit;
         this.dataCreated = dataCreated;
@@ -32,8 +35,8 @@ public class Task {
     }
 
 
-    public Task(String nomTaska, int sparks, Timestamp dataLimit, Timestamp dataCreated, Timestamp dataUpdated) {
-        this.nomTaska = nomTaska;
+    public Task(String nomTasca, int sparks, Timestamp dataLimit, Timestamp dataCreated, Timestamp dataUpdated) {
+        this.nomTasca = nomTasca;
         this.sparks = sparks;
         this.dataLimit = dataLimit;
         this.dataCreated = dataCreated;
@@ -47,11 +50,9 @@ public class Task {
     public void setId(long id) {
         this.id = id;
     }
-    public String getnomTaska() {
-        return nomTaska;
-    }
-    public void setNomTaska(String nomTaska) {
-        this.nomTaska = nomTaska;
+    
+    public void setNomTasca(String nomTasca) {
+        this.nomTasca = nomTasca;
     }
     public int getSparks() {
         return sparks;
@@ -84,11 +85,13 @@ public class Task {
         this.urlImage = urlImage;
     }
 
-
-    public String getNomTaska() {
-        return nomTaska;
+    public String getNomTasca() {
+        return nomTasca;
     }
 
+    public taskResponseDTO toTaskResponseDTO(){
+        return new taskResponseDTO();
+    }
     
 
 }

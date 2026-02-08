@@ -24,7 +24,7 @@ public class TaskRepository {
         public Task mapRow(ResultSet rs, int rowNum) throws SQLException {
             Task t = new Task();
             t.setId(rs.getLong("id"));
-            t.setNomTaska(rs.getString("nomTaska"));
+            t.setNomTasca(rs.getString("nomTasca"));
             t.setSparks(rs.getInt("sparks"));
             t.setDataLimit(rs.getTimestamp("dataLimit"));
             t.setDataCreated(rs.getTimestamp("dataCreated"));
@@ -39,54 +39,52 @@ public class TaskRepository {
 
     //create task & optional para imagen
     public int createTask(Task task){
-    String sql = "INSERT INTO tasks (nomTaska, sparks, dataLimit, dataCreated, dataUpdated, ultimAcces) VALUES (?, ?, ?, ?, ?, ?)";
+    String sql = "INSERT INTO tasks (nomTasca, sparks, dataLimit, dataCreated, dataUpdated) VALUES (?, ?, ?, ?, ?)";
     Timestamp now = new Timestamp(System.currentTimeMillis());
     return jdbcTemplate.update(sql, 
-        task.getNomTaska(), 
+        task.getNomTasca(), 
         task.getSparks(), 
         task.getDataLimit(), 
         now, 
-        now, 
         now
     );
-}
+    }
 
     // read all
+    public List<Task> readAll(){
+        return jdbcTemplate.query("SELECT * FROM tasks", taskMapper);
+    }
 
     // read x id
-
-
-
-
-
-    //H
-
-    public void updateUltimAcces(Timestamp hora, Long id){
-        String sql = "UPDATE tasks SET ultimAcces = ? WHERE id = ?";
-        jdbcTemplate.update(sql, hora, id);
+    public Task readById(long id){
+        String query = "SELECT * FROM tasks WHERE id = ?";
+        return jdbcTemplate.queryForObject(query, taskMapper, id);
     }
+
+
+
+
+
 
     // find by id
     public Task findTaskById(Long id){
-        Timestamp now = new Timestamp(System.currentTimeMillis());
         String sql = "SELECT * FROM tasks WHERE id = ?";
         List<Task> result = jdbcTemplate.query(sql, taskMapper, id);
-        updateUltimAcces(now, id);
         return result.get(0);
     }
 
     // set image path -> int ( n valors modificats)
     public int setImagePath(Long id, String urlImage){
         Timestamp now = new Timestamp(System.currentTimeMillis());
-        String sql = "UPDATE tasks SET urlImage = ?, dataUpdated = ?, ultimAcces = ? WHERE id = ?";
-        return jdbcTemplate.update(sql, urlImage, now, now, id);
+        String sql = "UPDATE tasks SET urlImage = ?, dataUpdated = ? WHERE id = ?";
+        return jdbcTemplate.update(sql, urlImage, now, id);
     }
 
     //update x id - int
-    public int updateTaskById(Long id, Task taska){
+    public int updateTaskById(Long id, Task tasca){
         Timestamp now = new Timestamp(System.currentTimeMillis());
-        String sql = "UPDATE tasks SET nomTaska = ?, sparks = ?, dataLimit = ?, dataUpdated = ?, ultimAcces = ?, urlImage = ? WHERE id = ?";
-        return jdbcTemplate.update(sql, taska.getNomTaska(), taska.getSparks(), taska.getDataLimit(), now, now, taska.getUrlImage(), id);
+        String sql = "UPDATE tasks SET nomTasca = ?, sparks = ?, dataLimit = ?, dataUpdated = ?,  urlImage = ? WHERE id = ?";
+        return jdbcTemplate.update(sql, tasca.getNomTasca(), tasca.getSparks(), tasca.getDataLimit(), now, tasca.getUrlImage(), id);
     }
 
     //delete all - int

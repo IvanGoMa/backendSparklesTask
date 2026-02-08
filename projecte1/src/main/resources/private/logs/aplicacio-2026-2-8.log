@@ -1,0 +1,28 @@
+[2026-02-08 20:31:06.256] INFO - TaskService - readAll - Consultant tots el usuaris
+[2026-02-08 20:39:27.043] INFO - TaskService - createTask - Creant una tasca
+[2026-02-08 20:39:27.056] ERROR - TaskService - createTask - No s'ha pogut crear l'usuari
+[2026-02-08 20:41:52.709] INFO - TaskService - createTask - Creant una tasca
+[2026-02-08 20:41:52.712] ERROR - TaskService - createTask - No s'ha pogut crear l'usuari
+[2026-02-08 20:43:07.139] INFO - TaskService - createTask - Creant una tasca
+[2026-02-08 20:43:07.164] ERROR - TaskService - createTask - No s'ha pogut crear l'usuari
+[2026-02-08 20:43:12.967] INFO - TaskService - createTask - Creant una tasca
+[2026-02-08 20:43:12.97] ERROR - TaskService - createTask - No s'ha pogut crear l'usuari
+[2026-02-08 20:43:44.276] INFO - TaskService - createTask - Creant una tasca
+[2026-02-08 20:43:44.282] ERROR - TaskService - createTask - No s'ha pogut crear l'usuari
+[2026-02-08 20:45:51.774] INFO - TaskService - createTask - Creant una tasca
+[2026-02-08 20:45:52.071] ERROR - TaskService - createTask - No s'ha pogut crear l'usuari
+[2026-02-08 20:46:07.69] INFO - TaskService - createTask - Creant una tasca
+[2026-02-08 20:51:59.814] INFO - TaskService - createTask - Creant una tasca
+[2026-02-08 20:51:59.819] ERROR - TaskService - createTask - No s'ha pogut crear l'usuari
+[2026-02-08 20:52:04.418] INFO - TaskService - createTask - Creant una tasca
+[2026-02-08 20:52:04.423] ERROR - TaskService - createTask - No s'ha pogut crear l'usuari
+[2026-02-08 20:53:04.29] INFO - TaskService - createTask - Creant una tasca
+[2026-02-08 20:53:04.294] ERROR - TaskService - createTask - No s'ha pogut crear l'usuari
+[2026-02-08 20:53:23.903] INFO - TaskService - createTask - Creant una tasca
+[2026-02-08 20:53:24.189] ERROR - TaskService - createTask - No s'ha pogut crear l'usuari
+[2026-02-08 20:54:27.294] INFO - TaskService - createTask - Creant una tasca
+[2026-02-08 20:54:27.298] ERROR - TaskService - createTask - No s'ha pogut crear l'usuari
+[2026-02-08 20:55:26.664] INFO - TaskService - createTask - Creant una tasca
+[2026-02-08 20:55:26.672] ERROR - TaskService - createTask - No s'ha pogut crear l'usuari
+[2026-02-08 20:55:48.714] INFO - TaskService - createTask - Creant una tasca
+[2026-02-08 20:55:49.004] ERROR - TaskService - createTask - No s'ha pogut crear l'usuari
