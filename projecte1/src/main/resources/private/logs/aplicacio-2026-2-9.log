@@ -1,0 +1,114 @@
+[2026-02-09 14:18:48.628] INFO - TaskService - createTask - Creant una tasca
+[2026-02-09 14:18:49.359] ERROR - TaskService - createTask - No s'ha pogut crear l'usuari
+[2026-02-09 14:18:58.074] INFO - TaskService - readAll - Consultant tots el usuaris
+[2026-02-09 14:23:07.53] INFO - TaskService - createTask - Creant una tasca
+[2026-02-09 14:23:07.542] ERROR - TaskService - createTask - No s'ha pogut crear l'usuari
+[2026-02-09 14:24:37.729] INFO - TaskService - createTask - Creant una tasca
+[2026-02-09 14:24:37.74] ERROR - TaskService - createTask - No s'ha pogut crear l'usuari
+[2026-02-09 14:29:00.125] INFO - TaskService - createTask - Creant una tasca
+[2026-02-09 14:29:00.132] ERROR - TaskService - createTask - No s'ha pogut crear l'usuari
+[2026-02-09 14:32:14.046] INFO - TaskService - createTask - Creant una tasca
+[2026-02-09 14:32:14.055] ERROR - TaskService - createTask - No s'ha pogut crear l'usuari
+[2026-02-09 14:33:07.565] INFO - TaskService - createTask - Creant una tasca
+[2026-02-09 14:33:07.574] ERROR - TaskService - createTask - No s'ha pogut crear l'usuari
+[2026-02-09 14:34:00.13] INFO - TaskService - createTask - Creant una tasca
+[2026-02-09 14:34:00.797] ERROR - TaskService - createTask - No s'ha pogut crear l'usuari
+[2026-02-09 14:47:32.918] INFO - TaskService - createTask - Creant una tasca
+[2026-02-09 14:47:33.587] ERROR - TaskService - createTask - No s'ha pogut crear l'usuari
+[2026-02-09 14:51:42.173] INFO - TaskService - createTask - Creant una tasca
+[2026-02-09 14:51:42.186] ERROR - TaskService - createTask - No s'ha pogut crear l'usuari
+[2026-02-09 14:52:37.717] INFO - TaskService - createTask - Creant una tasca
+[2026-02-09 14:52:37.726] ERROR - TaskService - createTask - No s'ha pogut crear l'usuari
+[2026-02-09 15:02:04.736] INFO - TaskService - createTask - Creant una tasca
+[2026-02-09 15:02:04.744] ERROR - TaskService - createTask - No s'ha pogut crear l'usuari
+[2026-02-09 15:02:07.121] INFO - TaskService - createTask - Creant una tasca
+[2026-02-09 15:02:07.13] ERROR - TaskService - createTask - No s'ha pogut crear l'usuari
+[2026-02-09 15:03:36.77] INFO - TaskService - createTask - Creant una tasca
+[2026-02-09 15:05:12.287] INFO - TaskService - createTask - Creant una tasca
+[2026-02-09 15:05:35.618] INFO - TaskService - createTask - Creant una tasca
+[2026-02-09 15:05:36.336] ERROR - TaskService - createTask - No s'ha pogut crear l'usuari
+[2026-02-09 15:09:07.839] INFO - TaskService - createTask - Creant una tasca
+[2026-02-09 15:09:07.852] ERROR - TaskService - createTask - No s'ha pogut crear l'usuari
+[2026-02-09 15:11:14.18] INFO - TaskService - createTask - Creant una tasca
+[2026-02-09 15:11:14.63] ERROR - TaskService - createTask - No s'ha pogut crear l'usuari
+[2026-02-09 15:15:24.88] INFO - TaskService - createTask - Creant una tasca
+[2026-02-09 15:15:25.393] ERROR - TaskService - createTask - No s'ha pogut crear l'usuari
+[2026-02-09 15:37:13.388] INFO - TaskService - createTask - Creant una tasca
+[2026-02-09 15:37:13.818] ERROR - TaskService - createTask - No s'ha pogut crear l'usuari
+[2026-02-09 15:40:30.884] INFO - TaskService - createTask - Creant una tasca
+[2026-02-09 15:40:30.906] INFO - TaskService - createTask - Usuari creat correctament
+[2026-02-09 15:41:36.487] INFO - TaskService - readAll - Consultant tots el usuaris
+[2026-02-09 15:42:34.739] INFO - TaskService - createTask - Creant una tasca
+[2026-02-09 15:42:34.753] INFO - TaskService - createTask - Usuari creat correctament
+[2026-02-09 15:42:36.011] INFO - TaskService - createTask - Creant una tasca
+[2026-02-09 15:42:36.021] INFO - TaskService - createTask - Usuari creat correctament
+[2026-02-09 15:52:54.719] INFO - TaskService - createTask - Creant una tasca
+[2026-02-09 15:52:54.741] INFO - TaskService - createTask - Usuari creat correctament
+[2026-02-09 15:54:36.013] INFO - TaskService - createTask - Creant una tasca
+[2026-02-09 15:54:36.034] INFO - TaskService - createTask - Tasca creada correctament
+[2026-02-09 15:55:42.751] INFO - TaskService - createTask - Creant una tasca
+[2026-02-09 15:55:42.773] INFO - TaskService - createTask - Tasca creada correctament
+[2026-02-09 16:03:39.861] INFO - TaskService - createTask - Creant una tasca
+[2026-02-09 16:03:39.878] INFO - TaskService - createTask - Tasca creada correctament
+[2026-02-09 16:04:49.034] INFO - TaskService - createTask - Creant una tasca
+[2026-02-09 16:04:49.054] INFO - TaskService - createTask - Tasca creada correctament
+[2026-02-09 16:10:07.67] INFO - TaskService - readAll - Consultant tots el usuaris
+[2026-02-09 16:10:18.671] INFO - TaskService - readAll - Consultant tots el usuaris
+[2026-02-09 16:16:38.788] INFO - TaskService - readAll - Consultant tots el usuaris
+[2026-02-09 16:18:39.297] INFO - TaskService - readAll - Consultant tots el usuaris
+[2026-02-09 16:22:56.864] INFO - TaskService - createTasks - Carregant la informació del fitxer csv
+[2026-02-09 16:22:56.869] ERROR - TaskService - createTasks - Error en la línia 1 del fitxer. Missatge d'error: java.lang.IllegalArgumentException: Timestamp format must be yyyy-mm-dd hh:mm:ss[.fffffffff]
+[2026-02-09 16:22:56.871] ERROR - TaskService - createTasks - Error en la línia 2 del fitxer. Missatge d'error: java.lang.IllegalArgumentException: Timestamp format must be yyyy-mm-dd hh:mm:ss[.fffffffff]
+[2026-02-09 16:22:56.873] ERROR - TaskService - createTasks - Error en la línia 3 del fitxer. Missatge d'error: java.lang.IllegalArgumentException: Timestamp format must be yyyy-mm-dd hh:mm:ss[.fffffffff]
+[2026-02-09 16:22:56.874] ERROR - TaskService - createTasks - Error en la línia 4 del fitxer. Missatge d'error: java.lang.IllegalArgumentException: Timestamp format must be yyyy-mm-dd hh:mm:ss[.fffffffff]
+[2026-02-09 16:22:56.875] ERROR - TaskService - createTasks - Error en la línia 5 del fitxer. Missatge d'error: java.lang.IllegalArgumentException: Timestamp format must be yyyy-mm-dd hh:mm:ss[.fffffffff]
+[2026-02-09 16:22:56.876] ERROR - TaskService - createTasks - Error en la línia 6 del fitxer. Missatge d'error: java.lang.IllegalArgumentException: Timestamp format must be yyyy-mm-dd hh:mm:ss[.fffffffff]
+[2026-02-09 16:22:56.877] ERROR - TaskService - createTasks - Error en la línia 7 del fitxer. Missatge d'error: java.lang.IllegalArgumentException: Timestamp format must be yyyy-mm-dd hh:mm:ss[.fffffffff]
+[2026-02-09 16:22:56.878] ERROR - TaskService - createTasks - Error en la línia 8 del fitxer. Missatge d'error: java.lang.IllegalArgumentException: Timestamp format must be yyyy-mm-dd hh:mm:ss[.fffffffff]
+[2026-02-09 16:22:56.882] INFO - TaskService - createTasks - S'han guardat correctament 0 registres i han donat error 8 registres
+[2026-02-09 16:25:23.769] INFO - TaskService - createTasks - Carregant la informació del fitxer csv
+[2026-02-09 16:25:23.772] ERROR - TaskService - createTasks - Error en la línia 1 del fitxer. Missatge d'error: java.lang.IllegalArgumentException: Timestamp format must be yyyy-mm-dd hh:mm:ss[.fffffffff]
+[2026-02-09 16:25:23.773] ERROR - TaskService - createTasks - Error en la línia 2 del fitxer. Missatge d'error: java.lang.IllegalArgumentException: Timestamp format must be yyyy-mm-dd hh:mm:ss[.fffffffff]
+[2026-02-09 16:25:23.774] ERROR - TaskService - createTasks - Error en la línia 3 del fitxer. Missatge d'error: java.lang.IllegalArgumentException: Timestamp format must be yyyy-mm-dd hh:mm:ss[.fffffffff]
+[2026-02-09 16:25:23.776] ERROR - TaskService - createTasks - Error en la línia 4 del fitxer. Missatge d'error: java.lang.IllegalArgumentException: Timestamp format must be yyyy-mm-dd hh:mm:ss[.fffffffff]
+[2026-02-09 16:25:23.778] ERROR - TaskService - createTasks - Error en la línia 5 del fitxer. Missatge d'error: java.lang.IllegalArgumentException: Timestamp format must be yyyy-mm-dd hh:mm:ss[.fffffffff]
+[2026-02-09 16:25:23.778] ERROR - TaskService - createTasks - Error en la línia 6 del fitxer. Missatge d'error: java.lang.IllegalArgumentException: Timestamp format must be yyyy-mm-dd hh:mm:ss[.fffffffff]
+[2026-02-09 16:25:23.779] ERROR - TaskService - createTasks - Error en la línia 7 del fitxer. Missatge d'error: java.lang.IllegalArgumentException: Timestamp format must be yyyy-mm-dd hh:mm:ss[.fffffffff]
+[2026-02-09 16:25:23.779] ERROR - TaskService - createTasks - Error en la línia 8 del fitxer. Missatge d'error: java.lang.IllegalArgumentException: Timestamp format must be yyyy-mm-dd hh:mm:ss[.fffffffff]
+[2026-02-09 16:25:23.782] ERROR - TaskService - createTasks - No s'ha pogut guardar l'arxiu
+[2026-02-09 16:25:23.784] INFO - TaskService - createTasks - S'han guardat correctament 0 registres i han donat error 8 registres
+[2026-02-09 16:25:47.124] INFO - TaskService - createTasks - Carregant la informació del fitxer csv
+[2026-02-09 16:25:47.128] ERROR - TaskService - createTasks - Error en la línia 1 del fitxer. Missatge d'error: java.lang.IllegalArgumentException: Timestamp format must be yyyy-mm-dd hh:mm:ss[.fffffffff]
+[2026-02-09 16:25:47.129] ERROR - TaskService - createTasks - Error en la línia 2 del fitxer. Missatge d'error: java.lang.IllegalArgumentException: Timestamp format must be yyyy-mm-dd hh:mm:ss[.fffffffff]
+[2026-02-09 16:25:47.13] ERROR - TaskService - createTasks - Error en la línia 3 del fitxer. Missatge d'error: java.lang.IllegalArgumentException: Timestamp format must be yyyy-mm-dd hh:mm:ss[.fffffffff]
+[2026-02-09 16:25:47.132] ERROR - TaskService - createTasks - Error en la línia 4 del fitxer. Missatge d'error: java.lang.IllegalArgumentException: Timestamp format must be yyyy-mm-dd hh:mm:ss[.fffffffff]
+[2026-02-09 16:25:47.132] ERROR - TaskService - createTasks - Error en la línia 5 del fitxer. Missatge d'error: java.lang.IllegalArgumentException: Timestamp format must be yyyy-mm-dd hh:mm:ss[.fffffffff]
+[2026-02-09 16:25:47.133] ERROR - TaskService - createTasks - Error en la línia 6 del fitxer. Missatge d'error: java.lang.IllegalArgumentException: Timestamp format must be yyyy-mm-dd hh:mm:ss[.fffffffff]
+[2026-02-09 16:25:47.134] ERROR - TaskService - createTasks - Error en la línia 7 del fitxer. Missatge d'error: java.lang.IllegalArgumentException: Timestamp format must be yyyy-mm-dd hh:mm:ss[.fffffffff]
+[2026-02-09 16:25:47.135] ERROR - TaskService - createTasks - Error en la línia 8 del fitxer. Missatge d'error: java.lang.IllegalArgumentException: Timestamp format must be yyyy-mm-dd hh:mm:ss[.fffffffff]
+[2026-02-09 16:25:47.138] ERROR - TaskService - createTasks - No s'ha pogut guardar l'arxiu
+[2026-02-09 16:25:47.139] INFO - TaskService - createTasks - S'han guardat correctament 0 registres i han donat error 8 registres
+[2026-02-09 16:27:40.396] INFO - TaskService - createTasks - Carregant la informació del fitxer csv
+[2026-02-09 16:27:40.452] ERROR - TaskService - createTasks - No s'ha pogut guardar l'arxiu
+[2026-02-09 16:27:40.453] INFO - TaskService - createTasks - S'han guardat correctament 8 registres i han donat error 0 registres
+[2026-02-09 16:28:15.468] INFO - TaskService - readAll - Consultant tots el usuaris
+[2026-02-09 16:28:26.666] INFO - TaskService - readById - Consultant la tasca
+[2026-02-09 16:28:32.856] INFO - TaskService - readAll - Consultant tots el usuaris
+[2026-02-09 16:30:50.72] INFO - TaskService - readAll - Consultant tots el usuaris
+[2026-02-09 17:05:31.313] INFO - TaskService - createTask - Creant una tasca
+[2026-02-09 17:05:31.336] INFO - TaskService - createTask - Tasca creada correctament
+[2026-02-09 17:05:35.788] INFO - TaskService - createTasks - Carregant la informació del fitxer csv
+[2026-02-09 17:05:35.834] ERROR - TaskService - createTasks - No s'ha pogut guardar l'arxiu
+[2026-02-09 17:05:35.834] INFO - TaskService - createTasks - S'han guardat correctament 8 registres i han donat error 0 registres
+[2026-02-09 17:06:19.499] INFO - TaskService - deleteById - Accedint a deleteById amb id: 2
+[2026-02-09 17:06:19.507] ERROR - TaskService - deleteById - Task amb id 2 no trobada per eliminar
+[2026-02-09 17:06:29.598] INFO - TaskService - deleteById - Accedint a deleteById amb id: 12
+[2026-02-09 17:06:29.61] INFO - TaskService - deleteById - Task amb id 12 eliminada correctament
+[2026-02-09 17:06:39.086] INFO - TaskService - addImage - Afegint imatge a la tasca
+[2026-02-09 17:06:39.114] INFO - TaskService - addImage - La url de la imatge s'ha actualitzat
+[2026-02-09 17:06:55.661] INFO - TaskService - updateTask - Accedint a updateTask amb id: 14
+[2026-02-09 17:06:55.681] INFO - TaskService - updateTask - Task amb id 14 actualitzada correctament
+[2026-02-09 17:07:06.841] INFO - TaskService - readAll - Consultant totes les tasques
+[2026-02-09 17:07:11.471] INFO - TaskService - readById - Consultant la tasca
+[2026-02-09 17:07:18.153] INFO - TaskService - deleteAll - Accedint a deleteAll
+[2026-02-09 17:07:18.169] INFO - TaskService - deleteAll - Totes les taskes eliminades correctament

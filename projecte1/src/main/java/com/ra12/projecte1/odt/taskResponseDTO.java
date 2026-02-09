@@ -9,6 +9,7 @@ public class taskResponseDTO {
     private Timestamp dataLimit;
     private String urlImage;
 
+    // Tasca sense dates ja que només es fan servir internament
     public taskResponseDTO(Timestamp dataLimit, Long id, String nomTasca, int sparks, String urlImage) {
         this.dataLimit = dataLimit;
         this.id = id;

@@ -25,12 +25,16 @@ import com.ra12.projecte1.repository.TaskRepository;
 @Service
 public class TaskService {
 
-    private static final Path PATH_DIR = Paths.get("private");
+    private static final Path PATH_DIR = Paths.get("src/main/resources/private/images");
 
+    // Connexió al repositori i els logs
     @Autowired
     TaskRepository repo;
+    @Autowired
     TaskLogs log;
 
+
+    // Llegir per id
     public taskResponseDTO readById(long id){
 
         String msg;
@@ -47,8 +51,9 @@ public class TaskService {
         }
     }
 
+    // Llegir totes les tasques
     public List<taskResponseDTO> readAll(){
-        String msg = log.info("TaskService", "readAll", "Consultant tots el usuaris");
+        String msg = log.info("TaskService", "readAll", "Consultant totes les tasques");
         log.writeToFile(msg);
         List<taskResponseDTO> tasksResponse = new ArrayList<>();
 
@@ -64,7 +69,10 @@ public class TaskService {
         
     }
 
+    // Crear una tasca
     public String[] createTask(taskRequestDTO taskDTO){
+
+        // Passem del dto al model per a igualar a la base de dades
         Task task = new Task();
         task.setNomTasca(taskDTO.getNomTasca());
         task.setSparks(taskDTO.getSparks());
@@ -76,18 +84,20 @@ public class TaskService {
         try {
             int result = repo.createTask(task);
             if (result > 0) {
-                log.writeToFile(log.info("TaskService", "createTask", "Usuari creat correctament"));
-                return new String[]{"ok", "Tasca s'ha creat correctament"};
+                log.writeToFile(log.info("TaskService", "createTask", "Tasca creada correctament"));
+                return new String[]{"ok", "La tasca s'ha creat correctament"};
             } else {
-                log.writeToFile(log.error("TaskService", "createTask", "No s'ha pogut crear l'usuari"));
+                log.writeToFile(log.error("TaskService", "createTask", "No s'ha pogut crear la tasca"));
                 return new String[]{"e", "No s'ha pogut crear la tasca"};
             }
         } catch (Exception e) {
-            log.writeToFile(log.error("TaskService", "createTask", "No s'ha pogut crear l'usuari"));
+            log.writeToFile(log.error("TaskService", "createTask", "No s'ha pogut crear la tasca"));
+            e.printStackTrace();
             return new String[]{"e", e.getMessage()};
         }
     }
 
+    // Importar registres desde un csv
     public int createTasks(MultipartFile csv) throws IOException{
 
         String msg = log.info("TaskService", "createTasks", "Carregant la informació del fitxer " + csv.getName());
@@ -98,6 +108,7 @@ public class TaskService {
 
         
         Timestamp now = new Timestamp(System.currentTimeMillis());
+        // Llegim amb buffered reader
         try(BufferedReader br = new BufferedReader(new InputStreamReader(csv.getInputStream()))){
             String linia;
             int nLinia = 1;
@@ -144,12 +155,13 @@ public class TaskService {
 
     }
 
-    // funció per afegir el url d'on es troba la imatge de la taska
+    // funció per afegir el url d'on es troba la imatge de la tasca
     public String[] addImage(Long id, MultipartFile image){
         Task existeix = idExisteix(id);
+        log.writeToFile(log.info("TaskService","addImage", "Afegint imatge a la tasca"));
         if (existeix == null){ // comprobem que la taska amb el id existeixi
-            log.error("TaskService", "idExisteix", "Usuari no trobat");
-            return new String[]{"e", "Usuari no trobat"};
+            log.writeToFile(log.error("TaskService", "idExisteix", "Tasca no trobada"));
+            return new String[]{"e", "Tasca no trobada"};
         }else { // en cas de que si existeixi:
             try{
                 if (Files.notExists(PATH_DIR)){ // comprova si no existeix la carpeta on es guarden les imatges (important: private)
@@ -161,34 +173,35 @@ public class TaskService {
                 int resposta = repo.setImagePath(id, urlSencer.toString()); // guardem a la base de dades la url de la imatge
 
                 if (resposta == 0){ // en cas de que s'hagi donat un error (0-no s'ha actualitzat res)
-                    log.error("TaskService", "addImage", "L'imatge no s'ha actualitzat"); // guardem l'error a logs
+                    log.writeToFile(log.error("TaskService", "addImage", "L'imatge no s'ha actualitzat")); // guardem l'error a logs
                     return new String[] {"e", "No s'ha pogut actualitzar l'imatge"}; // informa
                 }else { 
-                    log.info("TaskService", "addImage", "La url de la imatge s'ha actualitzat");
+                    log.writeToFile(log.info("TaskService", "addImage", "La url de la imatge s'ha actualitzat"));
                     return new String[] {"ok", "Imatge actualitzada correctament"};
                 }
             }catch (Exception e){ // en cas de que es produeixi un error que no hem previst
-                log.error("TaskService", "addImage", "Error de carpetes i files");
+                log.writeToFile(log.error("TaskService", "addImage", "Error de carpetes i files"));
                 return new String[] {"e", e.getMessage()};
             }
         }
     }
 
+    // Actualitzar una tasca
     public int updateTask(Long taskId, Task task) {
-        log.info("TaskService", "updateTask", "Accedint a updateTask amb id: " + taskId);
+        log.writeToFile(log.info("TaskService", "updateTask", "Accedint a updateTask amb id: " + taskId));
         
         try{
             int result = repo.updateTaskById(taskId, task);
             if(result > 0){
-                log.info("TaskService", "updateTask", 
-                    "Task amb id " + taskId + " actualitzada correctament");
+                log.writeToFile(log.info("TaskService", "updateTask", 
+                    "Task amb id " + taskId + " actualitzada correctament"));
             }else{
-                log.error("TaskService", "updateTask", 
-                    "Task amb id " + taskId + " no trobada per actualitzar");
+                log.writeToFile(log.error("TaskService", "updateTask", 
+                    "Task amb id " + taskId + " no trobada per actualitzar"));
             }
             return result;
         }catch(Exception e){
-            log.error("TaskService", "updateTask", "Error actualitzant taska");
+            log.writeToFile(log.error("TaskService", "updateTask", "Error actualitzant taska"));
             return 0;
         }
     }
@@ -201,20 +214,20 @@ public class TaskService {
 
     //elimina totes les taskes
     public int deleteAll(){
-        log.info("TaskService", "deleteAll", "Accedint a deleteAll");
+        log.writeToFile(log.info("TaskService", "deleteAll", "Accedint a deleteAll"));
         try{
             //funcio del repositori per eliminar tot de la BBDD
             int result = repo.deleteAll();
             if(result > 0){ // si el resultat és major que 0, significa que s'ha eliminat alguna taska, per tant guardem un log informatiu
-                log.info("TaskService", "deleteAll", 
-                    "Totes les taskes eliminades correctament");
+                log.writeToFile(log.info("TaskService", "deleteAll", 
+                    "Totes les taskes eliminades correctament"));
             }else{
-                log.error("TaskService", "deleteAll", 
-                    "No s'han trobat taskes per eliminar");
+                log.writeToFile(log.error("TaskService", "deleteAll", 
+                    "No s'han trobat taskes per eliminar"));
             }
             return result;
         }catch(Exception e){
-            log.error("TaskService", "deleteAll", "Error eliminant les taskes");
+            log.writeToFile(log.error("TaskService", "deleteAll", "Error eliminant les taskes"));
             return 0;
         }
     }
@@ -222,20 +235,20 @@ public class TaskService {
     // funció per eliminar una taska a partir del id
     public int deleteById(Long id){
         // log per indicar que s'ha accedit a la funció deleteById amb un id concret
-        log.info("TaskService", "deleteById", "Accedint a deleteById amb id: " + id);
+        log.writeToFile(log.info("TaskService", "deleteById", "Accedint a deleteById amb id: " + id));
         try{
             // cridem a la funció del repositori que elimina la taska i guardem el resultat (nombre de registres eliminats)
             int result = repo.deleteById(id);
             if(result > 0){ // si el resultat és major que 0, significa que s'ha eliminat una taska, per tant guardem un log informatiu
-                log.info("TaskService", "deleteById", 
-                    "Task amb id " + id + " eliminada correctament");
+                log.writeToFile(log.info("TaskService", "deleteById", 
+                    "Task amb id " + id + " eliminada correctament"));
             }else{
-                log.error("TaskService", "deleteById", 
-                    "Task amb id " + id + " no trobada per eliminar");
+                log.writeToFile(log.error("TaskService", "deleteById", 
+                    "Task amb id " + id + " no trobada per eliminar"));
             }
             return result;
         }catch(Exception e){
-            log.error("TaskService", "deleteById", "Error eliminant taska");
+            log.writeToFile(log.error("TaskService", "deleteById", "Error eliminant taska"));
             return 0;
         }
     }

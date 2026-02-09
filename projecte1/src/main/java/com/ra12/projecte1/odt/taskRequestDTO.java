@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 
 import com.ra12.projecte1.model.Task;
 
+// Tasca sense id ja que és autoincremental ni dates ja ques es creen automàticament
 public class taskRequestDTO {
     private String nomTasca; 
     private int sparks;

@@ -90,7 +90,7 @@ public class Task {
     }
 
     public taskResponseDTO toTaskResponseDTO(){
-        return new taskResponseDTO();
+        return new taskResponseDTO(dataLimit, id, nomTasca, sparks, urlImage);
     }
     
 

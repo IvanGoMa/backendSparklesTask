@@ -17,12 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
-import com.ra12.projecte1.odt.taskRequestDTO;
-import com.ra12.projecte1.services.TaskService;
 
 
 @RestController
@@ -32,6 +27,7 @@ public class TaskController {
     @Autowired
     TaskService service;
 
+    // Llegir totes les tasques
     @GetMapping("/task")
     public ResponseEntity<String> readAll(){
         try {
@@ -42,6 +38,7 @@ public class TaskController {
         }
     }
 
+    // Legir tasca per id
     @GetMapping("/task/{id}")
     public ResponseEntity<String> readById(@PathVariable long id) {
         try{
@@ -52,6 +49,7 @@ public class TaskController {
         }
     }
     
+    // Crear una tasca a partir del RequestDTO
     @PostMapping("/task")
     public ResponseEntity<String> createTask(@RequestBody taskRequestDTO task) {
         String[] resposta = service.createTask(task);
@@ -60,9 +58,9 @@ public class TaskController {
         }else return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(resposta[1]);
     }
 
-    //add image to task
+    // Afegir una imatge a la tasca
     @PostMapping("/task/{taskId}/add/imatge")
-    public ResponseEntity<String> postMethodName(@PathVariable Long taskId, @RequestParam("imageFile") MultipartFile imatge) throws Exception {
+    public ResponseEntity<String> postMethodName(@PathVariable Long taskId, MultipartFile imatge) throws Exception {
         String[] resposta = service.addImage(taskId, imatge);
         if (resposta[0].equals("ok")){ 
             return ResponseEntity.ok(resposta[1]);
@@ -71,18 +69,30 @@ public class TaskController {
         }
     }
 
-    //update x id
+    // Afegir tasques desde un csv
+    @PostMapping("task/batch")
+    public ResponseEntity<String> importTasks(@RequestBody MultipartFile csv) {
+        try {
+            service.createTasks(csv);
+            return ResponseEntity.ok("Tasques importades");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("No s'han pogut importar les tasques");
+        }
+    }
+
+    // Actualitzar tasca
     @PutMapping("/task/update/{taskId}")
     public ResponseEntity<String> updateTask(@PathVariable Long taskId, @RequestBody Task task) {
         // crida la funcio del service
         int result = service.updateTask(taskId, task);
         if (result > 0) {
-            return ResponseEntity.ok("Taska modificada correctament.");
+            return ResponseEntity.ok("Tasca modificada correctament.");
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Tas no trobat.");
         }
     }
     
+    // Esborrar totes les tasques
     @DeleteMapping("/task/delete/all")
     public ResponseEntity<String> deleteAllTasks() {
         // crida la funcio del service
@@ -94,7 +104,7 @@ public class TaskController {
         }
     }
 
-    //delete x id
+    // Esborrar una tasca per l'id
     @DeleteMapping("/task/delete/{taskId}")
     public ResponseEntity<String> deleteTask(@PathVariable Long taskId) {
         // crida la funcio del service
