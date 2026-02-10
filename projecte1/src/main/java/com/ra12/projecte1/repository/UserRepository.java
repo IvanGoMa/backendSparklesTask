@@ -42,4 +42,14 @@ public class UserRepository {
         return user.getPassword();
     }
 
+
+    public void updateSparks (String username, long sparks){
+        String sql = "UPDATE user SET sparks = ? WHERE username = ? ";
+        jdbc.update(sql, sparks, username);
+    }
+
+    public void createUser (User user){
+        String sql = "INSERT INTO user (username, password, sparks) VALUES (?,?,?)";
+        jdbc.update(sql,user.getUsername(),user.getPassword(),user.getSparks());
+    }
 }

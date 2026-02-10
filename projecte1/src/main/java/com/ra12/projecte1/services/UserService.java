@@ -3,6 +3,7 @@ package com.ra12.projecte1.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ra12.projecte1.model.User;
 import com.ra12.projecte1.repository.UserRepository;
 
 @Service
@@ -26,6 +27,22 @@ public class UserService {
             return -1;
         }
         
+    }
+
+    public void updateSparks(String name, long sparks){
+        try{
+            repo.updateSparks(name, sparks);
+        } catch (Exception e){
+            throw e;
+        }
+    }
+
+    public void createUser(User user){
+        try{
+            repo.createUser(user);
+        } catch (Exception e){
+            throw e;
+        }
     }
 
 }

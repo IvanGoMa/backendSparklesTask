@@ -8,3 +8,10 @@ CREATE TABLE IF NOT EXISTS task(
     dataUpdated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     urlImage VARCHAR(500)
 );
+
+CREATE TABLE IF NOT EXISTS user(
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    username varchar(20) NOT NULL UNIQUE,
+    password varchar(40) NOT NULL,
+    sparks INTEGER NOT NULL
+);
