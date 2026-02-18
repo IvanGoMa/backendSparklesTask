@@ -15,10 +15,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ra12.projecte1.dto.taskRequestDTO;
+import com.ra12.projecte1.dto.taskResponseDTO;
 import com.ra12.projecte1.logs.TaskLogs;
 import com.ra12.projecte1.model.Task;
-import com.ra12.projecte1.odt.taskRequestDTO;
-import com.ra12.projecte1.odt.taskResponseDTO;
 import com.ra12.projecte1.repository.TaskRepository;
 
 
@@ -232,7 +232,7 @@ public class TaskService {
         }
     }
 
-    // funció per eliminar una taska a partir del id
+    // Funció per eliminar una taska a partir del id
     public int deleteById(Long id){
         // log per indicar que s'ha accedit a la funció deleteById amb un id concret
         log.writeToFile(log.info("TaskService", "deleteById", "Accedint a deleteById amb id: " + id));
@@ -250,6 +250,20 @@ public class TaskService {
         }catch(Exception e){
             log.writeToFile(log.error("TaskService", "deleteById", "Error eliminant taska"));
             return 0;
+        }
+    }
+
+    // 
+    public long completeTask(long id){
+        Task task;
+
+        try{
+            task = repo.findTaskById(id);
+            repo.deleteById(id);
+            return task.getSparks();
+
+        } catch (Exception e){
+            return -1;
         }
     }
 

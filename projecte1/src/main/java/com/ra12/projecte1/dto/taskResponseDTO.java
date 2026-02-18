@@ -1,4 +1,4 @@
-package com.ra12.projecte1.odt;
+package com.ra12.projecte1.dto;
 
 import java.sql.Timestamp;
 

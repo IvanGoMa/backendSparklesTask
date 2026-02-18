@@ -3,9 +3,13 @@ package com.ra12.projecte1.controller;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ra12.projecte1.dto.APIResponse;
 import com.ra12.projecte1.model.Task;
-import com.ra12.projecte1.odt.taskRequestDTO;
+import com.ra12.projecte1.dto.taskRequestDTO;
+import com.ra12.projecte1.dto.taskResponseDTO;
 import com.ra12.projecte1.services.TaskService;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,91 +33,101 @@ public class TaskController {
 
     // Llegir totes les tasques
     @GetMapping("/task")
-    public ResponseEntity<String> readAll(){
+    public ResponseEntity<APIResponse<List<taskResponseDTO>>> readAll(){
         try {
-            String response = service.readAll().toString();
-            return ResponseEntity.ok(response);
+            List<taskResponseDTO> response = service.readAll();
+            return ResponseEntity.ok(new APIResponse<>(true, "Tasques retornades", response));
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("No s'han pogut llegir les tasques");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new APIResponse<>(false, "No s'han pogut llegir les tasques", null));
         }
     }
 
     // Legir tasca per id
     @GetMapping("/task/{id}")
-    public ResponseEntity<String> readById(@PathVariable long id) {
+    public ResponseEntity<APIResponse<taskResponseDTO>> readById(@PathVariable long id) {
         try{
-            String response = service.readById(id).toString();
-            return ResponseEntity.ok(response);
+            taskResponseDTO response = service.readById(id);
+            return ResponseEntity.ok(new APIResponse<>(true, "Tasca retornada", response));
         } catch (Exception e){
-             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("No s'ha pogut llegir la tasca");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new APIResponse<>(false, "No s'ha pogut llegir la tasca", null));
         }
     }
     
     // Crear una tasca a partir del RequestDTO
     @PostMapping("/task")
-    public ResponseEntity<String> createTask(@RequestBody taskRequestDTO task) {
+    public ResponseEntity<APIResponse<Void>> createTask(@RequestBody taskRequestDTO task) {
         String[] resposta = service.createTask(task);
         if (resposta[0].equals("ok")){
-            return ResponseEntity.ok(resposta[1]);
-        }else return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(resposta[1]);
+            return ResponseEntity.ok(new APIResponse<>(true,resposta[1], null));
+        }else return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new APIResponse<>(false, resposta[1], null));
     }
 
     // Afegir una imatge a la tasca
     @PostMapping("/task/{taskId}/add/imatge")
-    public ResponseEntity<String> postMethodName(@PathVariable Long taskId, MultipartFile imatge) throws Exception {
+    public ResponseEntity<APIResponse<Void>> postMethodName(@PathVariable Long taskId, MultipartFile imatge) throws Exception {
         String[] resposta = service.addImage(taskId, imatge);
         if (resposta[0].equals("ok")){ 
-            return ResponseEntity.ok(resposta[1]);
+            return ResponseEntity.ok(new APIResponse<>(true,resposta[1],null));
         }else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(resposta[1]);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new APIResponse<>(false,resposta[1],null));
         }
     }
 
     // Afegir tasques desde un csv
     @PostMapping("task/batch")
-    public ResponseEntity<String> importTasks(@RequestBody MultipartFile csv) {
+    public ResponseEntity<APIResponse<Void>> importTasks(@RequestBody MultipartFile csv) {
         try {
             service.createTasks(csv);
-            return ResponseEntity.ok("Tasques importades");
+            return ResponseEntity.ok(new APIResponse<>(true,"Tasques importades",null));
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("No s'han pogut importar les tasques");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new APIResponse<>(false,"No s'han pogut importar les tasques",null));
         }
     }
 
     // Actualitzar tasca
     @PutMapping("/task/update/{taskId}")
-    public ResponseEntity<String> updateTask(@PathVariable Long taskId, @RequestBody Task task) {
+    public ResponseEntity<APIResponse<Void>> updateTask(@PathVariable Long taskId, @RequestBody Task task) {
         // crida la funcio del service
         int result = service.updateTask(taskId, task);
         if (result > 0) {
-            return ResponseEntity.ok("Tasca modificada correctament.");
+            return ResponseEntity.ok(new APIResponse<>(true,"Tasca modificada correctament.", null));
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Tas no trobat.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new APIResponse<>(false,"Tas no trobat.",null));
         }
     }
     
     // Esborrar totes les tasques
     @DeleteMapping("/task/delete/all")
-    public ResponseEntity<String> deleteAllTasks() {
+    public ResponseEntity<APIResponse<Void>> deleteAllTasks() {
         // crida la funcio del service
         int result = service.deleteAll();
         if (result > 0) {
-            return ResponseEntity.ok("Totes les tasques han estat eliminades correctament.");
+            return ResponseEntity.ok(new APIResponse<>(true,"Totes les tasques han estat eliminades correctament.",null));
         } else {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("No s'han pogut eliminar les tasques.");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new APIResponse<>(false,"No s'han pogut eliminar les tasques", null));
         }
     }
 
     // Esborrar una tasca per l'id
     @DeleteMapping("/task/delete/{taskId}")
-    public ResponseEntity<String> deleteTask(@PathVariable Long taskId) {
+    public ResponseEntity<APIResponse<Void>> deleteTask(@PathVariable Long taskId) {
         // crida la funcio del service
         int result = service.deleteById(taskId);
         if (result > 0) {
-            return ResponseEntity.ok("Tasca eliminada correctament.");
+            return ResponseEntity.ok(new APIResponse<>(true,"Tasca eliminada correctament",null));
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Tasca no trobada.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new APIResponse<>(false,"Tasca no trobada.",null));
         }
+    }
+
+    // Completar tasca
+    @DeleteMapping("/task/complete/{taskId}")
+    public ResponseEntity<APIResponse<Long>> completeTask(@PathVariable long taskId){
+        long result = service.completeTask(taskId);
+        if (result > 0) {
+            return ResponseEntity.ok(new APIResponse<>(true, "Tasca completada", result));
+        }
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new APIResponse<>(false, "No s'ha pogut eliminar la tasca", null));
     }
     
     

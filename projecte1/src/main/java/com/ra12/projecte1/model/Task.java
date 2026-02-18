@@ -2,7 +2,7 @@ package com.ra12.projecte1.model;
 
 import java.sql.Timestamp;
 
-import com.ra12.projecte1.odt.taskResponseDTO;
+import com.ra12.projecte1.dto.taskResponseDTO;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
