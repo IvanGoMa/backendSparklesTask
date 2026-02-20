@@ -36,10 +36,10 @@ public class TaskController {
 
     // Llegir totes les tasques
     @GetMapping("/task")
-    public ResponseEntity<APIResponse<List<taskResponseDTO>>> readAll(){
+    public ResponseEntity<List<taskResponseDTO>> readAll(){
         try {
             List<taskResponseDTO> response = service.readAll();
-            return ResponseEntity.ok(new APIResponse<>(true, "Tasques retornades", response));
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new APIResponse<>(false, "No s'han pogut llegir les tasques", null));
         }
