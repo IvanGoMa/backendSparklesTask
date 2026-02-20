@@ -260,6 +260,7 @@ public class TaskService {
         try{
             task = repo.findTaskById(id);
             repo.deleteById(id);
+            
             return task.getSparks();
 
         } catch (Exception e){

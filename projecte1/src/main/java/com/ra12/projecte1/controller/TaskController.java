@@ -8,6 +8,7 @@ import com.ra12.projecte1.model.Task;
 import com.ra12.projecte1.dto.taskRequestDTO;
 import com.ra12.projecte1.dto.taskResponseDTO;
 import com.ra12.projecte1.services.TaskService;
+import com.ra12.projecte1.services.UserService;
 
 import java.util.List;
 
@@ -30,6 +31,8 @@ public class TaskController {
 
     @Autowired
     TaskService service;
+    @Autowired
+    UserService uService;
 
     // Llegir totes les tasques
     @GetMapping("/task")
@@ -124,8 +127,11 @@ public class TaskController {
     @DeleteMapping("/task/complete/{taskId}")
     public ResponseEntity<APIResponse<Long>> completeTask(@PathVariable long taskId){
         long result = service.completeTask(taskId);
+        long oldSparks = uService.getSparks("Hanna");
+        uService.updateSparks("Hanna", oldSparks + result);
+        long newSparks = uService.getSparks("Hanna");
         if (result > 0) {
-            return ResponseEntity.ok(new APIResponse<>(true, "Tasca completada", result));
+            return ResponseEntity.ok(new APIResponse<>(true, "Tasca completada", newSparks));
         }
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new APIResponse<>(false, "No s'ha pogut eliminar la tasca", null));
     }
